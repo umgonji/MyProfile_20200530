@@ -16,7 +16,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         changenickBtn.setOnClickListener {
+
+            var nickName = myNickNameText.text.toString()
+
+            if(nickName == "본인 닉네임 표시") {
+                nickName = ""
+            }
+
             val myIntent = Intent(this, EditNickNameActivity::class.java)
+            myIntent.putExtra("nowNickName", nickName)
             startActivityForResult(myIntent, REQ_FOR_NICKNAME)
 
         }
