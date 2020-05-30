@@ -30,6 +30,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
 
         }
+
+        smsBtn.setOnClickListener {
+            val phoneNum = phoneNumEdt.text.toString()
+            val content = contentEdt.text.toString()
+
+            val myUri = Uri.parse("smsto:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            myIntent.putExtra("sms_body", content)
+
+            startActivity(myIntent)
+
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
